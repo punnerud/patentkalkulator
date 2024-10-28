@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priskalkulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        /* Custom styles for the toggle switch */
+        .toggle-checkbox:checked+.toggle-label .toggle-switch {
+            background-color: #48bb78;
+        }
+
+        .toggle-checkbox:checked+.toggle-label .toggle-dot {
+            transform: translateX(100%);
+        }
+
+        .toggle-checkbox:checked+.toggle-label {
+            background-color: #48bb78;
+        }
+
+        /* Styles for locked toggles */
+        .toggle-checkbox:disabled:checked+.toggle-label {
+            background-color: #7EB69E;
+            /* Desaturated green */
+            cursor: not-allowed;
+        }
+
+        .toggle-checkbox:disabled:checked+.toggle-label .toggle-dot {
+            background-color: #E2E8F0;
+            /* Light gray for the dot */
+        }
+
+        /* New styles for the tab buttons */
+        .tab-button {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #f97316;
+            /* Orange color */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">Norsk patentsøknad</h1>
+            <select id="productType" class="w-full p-3 mb-6 border rounded-md bg-gray-50">
+                <!-- Options will be populated by JavaScript -->
+            </select>
+
+            <div class="flex space-x-4 mb-6">
+                <button id="budgetTab" class="tab-button active text-orange-500 font-semibold">Budsjett for
+                    søknad</button>
+                <button id="processTab" class="tab-button text-gray-500">Prosess</button>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-6">
+                Bruk knappene for å velge om du vil bruke privat rådgiver til å hjelpe deg med søknadsprosessen.
+                Du kan ikke velge bort gebyrer til myndigheter.
+            </p>
+
+            <div id="budgetContent">
+                <div class="flex flex-col lg:flex-row lg:space-x-6">
+                    <div class="w-full lg:w-3/5">
+                        <h2 class="text-xl font-semibold mb-4 bg-gray-100 p-3">Kalkulator</h2>
+                        <div id="optionsContainer">
+                            <!-- Toggles will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
+                        <h2 class="text-xl font-semibold mb-4 bg-gray-100 p-3">Dine valg</h2>
+                        <h3 class="text-orange-500 font-semibold mb-2">Spesifisering av valg</h3>
+                        <div id="summary" class="mb-4">
+                            <!-- Summary will be populated by JavaScript -->
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-bold">Faste kostnader</p>
+                            <p class="text-2xl font-bold" id="total"></p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-bold">Løpende kostnader</p>
+                            <p class="text-xl font-bold"><span id="recurringCost">0</span> kr. / årlig</p>
+                        </div>
+                        <button id="generatePDF" class="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded">
+                            Skriv ut/lagre beregning
+                        </button>
+                        <p class="text-xs text-gray-500 mt-4">
+                            NB: De angitte prisene skal kun gi et innblikk i kostnadsnivået ved patentering. Prisene er
+                            basert på et estimat av utgifter til gebyrer, privat rådgivning, oversettelser osv. for de
+                            første 3-5 årene for en
+                            enkel søknad. De kan ikke sidestilles med en konkret beregning. Du bør derfor konsultere en
+                            rådgiver for å få
+                            et mer nøyaktig anslag på hva det vil koste deg å patentere oppfinnelsen din.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="processContent" style="display: none;">
+                <div id="processSteps" class="mt-6">
+                    <!-- Process steps will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let data;
+
+        async function loadData() {
+            const response = await fetch('data.json');
+            data = await response.json();
+            initializeCalculator();
+        }
+
+        const productSelect = document.getElementById('productType');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const summaryContainer = document.getElementById('summary');
+        const totalElement = document.getElementById('total');
+        const recurringCostElement = document.getElementById('recurringCost');
+
+        function initializeCalculator() {
+            data.products.forEach((product, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = product.name;
+                productSelect.appendChild(option);
+            });
+
+            productSelect.addEventListener('change', updateOptions);
+            updateOptions();
+        }
+
+        function updateOptions() {
+            const selectedProduct = data.products[productSelect.value];
+            optionsContainer.innerHTML = '';
+            summaryContainer.innerHTML = '';
+
+            selectedProduct.subcategories.forEach((subcategory, subcategoryIndex) => {
+                const subcategoryElement = document.createElement('div');
+                subcategoryElement.className = 'mb-4';
+                subcategoryElement.innerHTML = `<h3 class="font-semibold text-lg mb-2">${subcategory.name}</h3>`;
+
+                subcategory.options.forEach((option, optionIndex) => {
+                    const toggleContainer = document.createElement('div');
+                    toggleContainer.className = 'flex items-center justify-between py-3 border-b';
+
+                    const label = document.createElement('label');
+                    label.className = 'flex items-center cursor-pointer';
+                    label.innerHTML = `
+                        <div class="relative mr-3">
+                            <input type="checkbox" id="toggle_${subcategoryIndex}_${optionIndex}" class="toggle-checkbox sr-only" ${option.fixed ? 'checked disabled' : ''}>
+                            <div class="toggle-label block overflow-hidden h-6 w-11 rounded-full bg-gray-300 cursor-pointer transition-colors ease-in-out duration-200">
+                                <div class="toggle-dot absolute w-6 h-6 rounded-full bg-white shadow inset-y-0 left-0 transition-transform duration-200 ease-in-out"></div>
+                            </div>
+                        </div>
+                        <div class="text-gray-700">${option.name}</div>
+                    `;
+
+                    const price = document.createElement('span');
+                    price.className = 'text-gray-600';
+                    price.textContent = `${option.price} kr.`;
+
+                    toggleContainer.appendChild(label);
+                    toggleContainer.appendChild(price);
+                    subcategoryElement.appendChild(toggleContainer);
+
+                    if (!option.fixed) {
+                        label.querySelector('input').addEventListener('change', updateSummary);
+                    }
+                });
+
+                optionsContainer.appendChild(subcategoryElement);
+            });
+
+            updateSummary();
+            updateProcessSteps();
+        }
+
+        function updateSummary() {
+            const selectedProduct = data.products[productSelect.value];
+            summaryContainer.innerHTML = '';
+            let total = 0;
+            let recurringCost = 0;
+
+            selectedProduct.subcategories.forEach((subcategory, subcategoryIndex) => {
+                subcategory.options.forEach((option, optionIndex) => {
+                    const toggle = document.getElementById(`toggle_${subcategoryIndex}_${optionIndex}`);
+                    if (option.fixed || (toggle && toggle.checked)) {
+                        const item = document.createElement('div');
+                        item.className = 'flex justify-between py-1 text-sm';
+                        item.innerHTML = `
+                            <span class="w-3/5 pr-2">${option.name}</span>
+                            <span class="w-2/5 text-right">${option.price} kr.</span>
+                        `;
+                        summaryContainer.appendChild(item);
+
+                        if (option.recurring) {
+                            recurringCost += option.price;
+                        } else {
+                            total += option.price;
+                        }
+                    }
+                });
+            });
+
+            totalElement.textContent = `${total} kr.`;
+            recurringCostElement.textContent = recurringCost;
+        }
+
+        function generatePDF() {
+            const {jsPDF} = window.jspdf;
+            const doc = new jsPDF();
+
+            const timestamp = new Date().toLocaleString('no-NO');
+            const webAddress = window.location.href;
+
+            // Set colors
+            const orangeColor = [249, 115, 22]; // RGB for #f97316
+            const grayColor = [107, 114, 128]; // RGB for #6B7280
+
+            // Title
+            doc.setFontSize(18);
+            doc.setTextColor(orangeColor[0], orangeColor[1], orangeColor[2]);
+            doc.text('Patentsøknad Kostnadsberegning', 20, 20);
+
+            // Timestamp and web address
+            doc.setFontSize(10);
+            doc.setTextColor(grayColor[0], grayColor[1], grayColor[2]);
+            doc.text(`Generert: ${timestamp}`, 20, 30);
+            doc.text(`Nettadresse: ${webAddress}`, 20, 35);
+
+            // Dine valg
+            doc.setFontSize(14);
+            doc.setTextColor(orangeColor[0], orangeColor[1], orangeColor[2]);
+            doc.text('Dine valg:', 20, 45);
+
+            // Create table data
+            const tableData = [];
+            const summaryItems = document.querySelectorAll('#summary > div');
+            summaryItems.forEach(item => {
+                const [name, price] = item.textContent.trim().split(/(\d+)/).filter(Boolean);
+                tableData.push([name.trim(), `${price.trim()} kr.`]);
+            });
+
+            // Add table to PDF
+            doc.autoTable({
+                startY: 50,
+                head: [['Spesifisering av valg', 'Pris']],
+                body: tableData,
+                theme: 'plain',
+                headStyles: {fillColor: [249, 115, 22], textColor: 255},
+                alternateRowStyles: {fillColor: [249, 250, 251]},
+                margin: {top: 50, left: 20, right: 20},
+            });
+
+            // Total costs
+            const totalCost = document.getElementById('total').textContent;
+            const recurringCost = document.getElementById('recurringCost').textContent;
+
+            const finalY = doc.lastAutoTable.finalY || 50;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Faste kostnader: ${totalCost}`, 20, finalY + 10);
+            doc.text(`Løpende kostnader: ${recurringCost} kr. / årlig`, 20, finalY + 20);
+
+            // Disclaimer
+            doc.setFontSize(8);
+            doc.setTextColor(grayColor[0], grayColor[1], grayColor[2]);
+            const disclaimer = `NB: De angitte prisene skal kun gi et innblikk i kostnadsnivået ved patentering. Prisene er basert på et estimat av utgifter til gebyrer, privat rådgivning, oversettelser osv. for de første 3-5 årene for en enkel søknad. De kan ikke sidestilles med en konkret beregning. Du bør derfor konsultere en rådgiver for å få et mer nøyaktig anslag på hva det vil koste deg å patentere oppfinnelsen din.`;
+            const splitDisclaimer = doc.splitTextToSize(disclaimer, 170);
+            doc.text(splitDisclaimer, 20, finalY + 30);
+
+            doc.save('patentsoknad_kostnadsberegning.pdf');
+        }
+
+        function updateProcessSteps() {
+            const selectedProduct = data.products[productSelect.value];
+            const processStepsContainer = document.getElementById('processSteps');
+
+            if (selectedProduct.process) {
+                let stepsHtml = '';
+                selectedProduct.process.forEach((step, index) => {
+                    stepsHtml += `
+                        <div class="process-step mb-8">
+                            <h3 class="text-xl font-semibold mb-2">
+                                <span class="inline-block w-8 h-8 bg-orange-500 text-white rounded-full text-center leading-8 mr-2">${index + 1}</span>
+                                ${step.title}
+                            </h3>
+                            <ul class="list-disc pl-12">
+                                ${step.details.map(detail => `<li class="mb-2">${detail}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                });
+                processStepsContainer.innerHTML = stepsHtml;
+            } else {
+                processStepsContainer.innerHTML = '<p>Ingen prosessinformasjon tilgjengelig for dette produktet.</p>';
+            }
+        }
+
+        // Add tab switching functionality
+        const budgetTab = document.getElementById('budgetTab');
+        const processTab = document.getElementById('processTab');
+        const budgetContent = document.getElementById('budgetContent');
+        const processContent = document.getElementById('processContent');
+
+        budgetTab.addEventListener('click', () => {
+            budgetTab.classList.add('active', 'text-orange-500');
+            budgetTab.classList.remove('text-gray-500');
+            processTab.classList.remove('active', 'text-orange-500');
+            processTab.classList.add('text-gray-500');
+            budgetContent.style.display = 'block';
+            processContent.style.display = 'none';
+        });
+
+        processTab.addEventListener('click', () => {
+            processTab.classList.add('active', 'text-orange-500');
+            processTab.classList.remove('text-gray-500');
+            budgetTab.classList.remove('active', 'text-orange-500');
+            budgetTab.classList.add('text-gray-500');
+            processContent.style.display = 'block';
+            budgetContent.style.display = 'none';
+        });
+
+        document.getElementById('generatePDF').addEventListener('click', generatePDF);
+
+        loadData();
+    </script>
+</body>
+
+</html>

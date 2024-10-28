@@ -1,0 +1,481 @@
+{
+  "products": [
+    {
+      "name": "Norsk patentsøknad",
+      "basePrice": 0,
+      "subcategories": [
+        {
+          "name": "Første år",
+          "options": [
+            {
+              "name": "Dialogsøk hos Patentstyret",
+              "price": 3500,
+              "fixed": false,
+              "description": "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser etter lignende ideer. Dette gir en god indikasjon på sannsynligheten for å få patent, eller om det finnes utløpte patenter som gir 'Freedom to operate'."
+            },
+            {
+              "name": "Utarbeidelse og håndtering av søknad (utgift til rådgiver)",
+              "price": 55000,
+              "fixed": false,
+              "description": "Rådgiveren setter seg inn i oppfinnelsen din, og spesielt hvordan den skiller seg fra lignende oppfinnelser. Rådgiveren gjør vanligvis også en mindre nyhetsgranskning før søknaden skrives og sendes inn."
+            },
+            {
+              "name": "Gebyr til Patent- og Varemerkestyret for innlevering",
+              "price": 3000,
+              "fixed": true,
+              "description": "Gebyret for å sende inn en patentsøknad med høyst 10 krav er 3.000 kr. I tillegg koster det 300 kr for hvert påfølgende patentkrav."
+            },
+            {
+              "name": "Tilpasning av norsk søknad (utgift til rådgiver)",
+              "price": 15000,
+              "fixed": false,
+              "description": "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden."
+            }
+          ]
+        },
+        {
+          "name": "Andre år",
+          "options": [
+            {
+              "name": "Ytterligere tilpasning av norsk søknad (utgift til rådgiver)",
+              "price": 5000,
+              "fixed": false,
+              "description": "Tilpasningen av søknaden din kan foregå i flere omganger, og kan for eksempel gjelde ytterligere forklaringer på oppfinnelsen."
+            },
+            {
+              "name": "Publiseringsgebyr",
+              "price": 2000,
+              "fixed": true,
+              "description": "Et publiseringsgebyr er det du må betale til Patent- og Varemerkestyret for registrering og offentliggjøring av patentet ditt. Når du har betalt, utsteder Patent- og Varemerkestyret patentet ditt."
+            }
+          ]
+        },
+        {
+          "name": "Løpende kostnader",
+          "options": [
+            {
+              "name": "Årsgebyr til Patent- og Varemerkestyret",
+              "price": 500,
+              "fixed": true,
+              "recurring": true,
+              "description": "Du må betale et årlig gebyr for å opprettholde patentet ditt. De tre første årene er årsgebyret 500 kr per år. Deretter øker årsgebyret. Vær oppmerksom på at du eventuelt må betale ytterligere til rådgiver for håndtering av gebyrer."
+            }
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Dialogsøk hos Patentstyret (valgfritt)",
+          "details": [
+            "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser.",
+            "Gir tidlig indikasjon på muligheten for å få patent.",
+            "Kan avdekke utløpte patenter som gir 'Freedom to operate'.",
+            "Anbefales å gjøre før du går videre med søknadsprosessen."
+          ]
+        },
+        {
+          "title": "Innlevering av norsk patentsøknad til Patentstyret",
+          "details": [
+            "Din søknad kan holdes hemmelig i opptil 18 måneder.",
+            "Du kan bruke søknaden til å søke om patent i utlandet innenfor 12 måneder (bruk av \"prioritet\").",
+            "Senest syv måneder fra innlevering vurderer Patentstyret søknaden din."
+          ]
+        },
+        {
+          "title": "Tilpasning av den norske patentsøknaden",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Etter 2-4 år: Patentet ditt blir utstedt",
+          "details": [
+            "Når patentet blir utstedt, vil omfanget av beskyttelsen være synlig for andre. Du må løpende vurdere om du vil opprettholde patentet ditt. For hvert år patentet opprettholdes, må du betale et årsgebyr. Dette gebyret øker for hvert år."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Norsk + europeisk patentsøknad",
+      "basePrice": 0,
+      "subcategories": [
+        {
+          "name": "Første år",
+          "options": [
+            {
+              "name": "Dialogsøk hos Patentstyret",
+              "price": 3500,
+              "fixed": false,
+              "description": "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser etter lignende ideer. Dette gir en god indikasjon på sannsynligheten for å få patent, eller om det finnes utløpte patenter som gir 'Freedom to operate'."
+            },
+            {
+              "name": "Utarbeidelse og håndtering av søknad (utgift til rådgiver)",
+              "price": 65000,
+              "fixed": false,
+              "description": "Rådgiveren setter seg inn i oppfinnelsen din og forbereder både norsk og europeisk søknad."
+            },
+            {
+              "name": "Gebyr til Patent- og Varemerkestyret for innlevering",
+              "price": 3000,
+              "fixed": true,
+              "description": "Gebyret for å sende inn en norsk patentsøknad."
+            },
+            {
+              "name": "Gebyr til EPO for innlevering og nyhetsgranskning",
+              "price": 16000,
+              "fixed": true,
+              "description": "Gebyr til Det europeiske patentverket (EPO) for innlevering og nyhetsgranskning av den europeiske søknaden."
+            }
+          ]
+        },
+        {
+          "name": "Andre år",
+          "options": [
+            {
+              "name": "Tilpasning av norsk og europeisk søknad (utgift til rådgiver)",
+              "price": 25000,
+              "fixed": false,
+              "description": "Justering av både norsk og europeisk søknad basert på tilbakemeldinger fra patentkontorene."
+            }
+          ]
+        },
+        {
+          "name": "Løpende kostnader",
+          "options": [
+            {
+              "name": "Årsgebyr til Patent- og Varemerkestyret",
+              "price": 500,
+              "fixed": true,
+              "recurring": true,
+              "description": "Årlig gebyr for å opprettholde det norske patentet."
+            },
+            {
+              "name": "Årsgebyr til EPO",
+              "price": 5000,
+              "fixed": true,
+              "recurring": true,
+              "description": "Årlig gebyr for å opprettholde det europeiske patentet."
+            }
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Dialogsøk hos Patentstyret (valgfritt)",
+          "details": [
+            "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser.",
+            "Gir tidlig indikasjon på muligheten for å få patent.",
+            "Kan avdekke utløpte patenter som gir 'Freedom to operate'.",
+            "Anbefales å gjøre før du går videre med søknadsprosessen."
+          ]
+        },
+        {
+          "title": "Innlevering av norsk patentsøknad til Patentstyret",
+          "details": [
+            "Din søknad kan holdes hemmelig i opptil 18 måneder.",
+            "Du kan bruke søknaden til å søke om patent i utlandet innenfor 12 måneder (bruk av \"prioritet\").",
+            "Senest syv måneder fra innlevering vurderer Patentstyret søknaden din."
+          ]
+        },
+        {
+          "title": "Tilpasning av den norske patentsøknaden",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Innlevering av europeisk patentsøknad",
+          "details": [
+            "Vanligvis omkring 6-7 måneder etter at du har levert inn din europeiske søknad, mottar du en vurdering av oppfinnelsen fra EPO."
+          ]
+        },
+        {
+          "title": "Tilpasning av europeisk patentsøknad",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Gyldighet og oversettelse av europeisk patent i de valgte landene",
+          "details": [
+            "Når patentet er blitt godkjent av EPO, har du tre måneder på å velge hvilke europeiske land du vil at patentet skal gjelde i.",
+            "For hvert valgt land må patentet oversettes til det aktuelle landets språk. I de fleste land (blant annet Norge) er det tilstrekkelig å oversette kravene."
+          ]
+        },
+        {
+          "title": "Etter 2-4 år: Patentet ditt blir utstedt",
+          "details": [
+            "Når patentet blir utstedt, vil omfanget av beskyttelsen være synlig for andre. Du må løpende vurdere om du vil opprettholde patentet ditt. For hvert år patentet opprettholdes, må du betale et årsgebyr. Dette gebyret øker for hvert år."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Norsk + internasjonal patentsøknad",
+      "basePrice": 0,
+      "subcategories": [
+        {
+          "name": "Første år",
+          "options": [
+            {
+              "name": "Dialogsøk hos Patentstyret",
+              "price": 3500,
+              "fixed": false,
+              "description": "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser etter lignende ideer. Dette gir en god indikasjon på sannsynligheten for å få patent, eller om det finnes utløpte patenter som gir 'Freedom to operate'."
+            },
+            {
+              "name": "Utarbeidelse og håndtering av søknad (utgift til rådgiver)",
+              "price": 70000,
+              "fixed": false,
+              "description": "Rådgiveren setter seg inn i oppfinnelsen din og forbereder både norsk og internasjonal (PCT) søknad."
+            },
+            {
+              "name": "Gebyr til Patent- og Varemerkestyret for innlevering",
+              "price": 3000,
+              "fixed": true,
+              "description": "Gebyret for å sende inn en norsk patentsøknad."
+            },
+            {
+              "name": "Gebyr til WIPO for internasjonal søknad",
+              "price": 20000,
+              "fixed": true,
+              "description": "Gebyr til Verdensorganisasjonen for intellektuell eiendomsrett (WIPO) for innlevering av internasjonal søknad."
+            }
+          ]
+        },
+        {
+          "name": "Andre år",
+          "options": [
+            {
+              "name": "Tilpasning av norsk og internasjonal søknad (utgift til rådgiver)",
+              "price": 30000,
+              "fixed": false,
+              "description": "Justering av både norsk og internasjonal søknad basert på tilbakemeldinger fra patentkontorene."
+            }
+          ]
+        },
+        {
+          "name": "Løpende kostnader",
+          "options": [
+            {
+              "name": "Årsgebyr til Patent- og Varemerkestyret",
+              "price": 500,
+              "fixed": true,
+              "recurring": true,
+              "description": "Årlig gebyr for å opprettholde det norske patentet."
+            }
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Dialogsøk hos Patentstyret (valgfritt)",
+          "details": [
+            "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser.",
+            "Gir tidlig indikasjon på muligheten for å få patent.",
+            "Kan avdekke utløpte patenter som gir 'Freedom to operate'.",
+            "Anbefales å gjøre før du går videre med søknadsprosessen."
+          ]
+        },
+        {
+          "title": "Innlevering av norsk patentsøknad til Patentstyret",
+          "details": [
+            "Din søknad kan holdes hemmelig i opptil 18 måneder.",
+            "Du kan bruke søknaden til å søke om patent i utlandet innenfor 12 måneder (bruk av \"prioritet\").",
+            "Senest syv måneder fra innlevering vurderer Patentstyret søknaden din."
+          ]
+        },
+        {
+          "title": "Tilpasning av den norske patentsøknaden",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Etter 2-4 år: Patentet ditt blir utstedt",
+          "details": [
+            "Når patentet blir utstedt, vil omfanget av beskyttelsen være synlig for andre. Du må løpende vurdere om du vil opprettholde patentet ditt. For hvert år patentet opprettholdes, må du betale et årsgebyr. Dette gebyret øker for hvert år."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Europeisk patentsøknad",
+      "basePrice": 0,
+      "subcategories": [
+        {
+          "name": "Første år",
+          "options": [
+            {
+              "name": "Dialogsøk hos Patentstyret",
+              "price": 3500,
+              "fixed": false,
+              "description": "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser etter lignende ideer. Dette gir en god indikasjon på sannsynligheten for å få patent, eller om det finnes utløpte patenter som gir 'Freedom to operate'."
+            },
+            {
+              "name": "Utarbeidelse og håndtering av søknad (utgift til rådgiver)",
+              "price": 60000,
+              "fixed": false,
+              "description": "Rådgiveren setter seg inn i oppfinnelsen din og forbereder europeisk søknad."
+            },
+            {
+              "name": "Gebyr til EPO for innlevering og nyhetsgranskning",
+              "price": 16000,
+              "fixed": true,
+              "description": "Gebyr til Det europeiske patentverket (EPO) for innlevering og nyhetsgranskning av den europeiske søknaden."
+            }
+          ]
+        },
+        {
+          "name": "Andre år",
+          "options": [
+            {
+              "name": "Tilpasning av europeisk søknad (utgift til rådgiver)",
+              "price": 20000,
+              "fixed": false,
+              "description": "Justering av europeisk søknad basert på tilbakemeldinger fra EPO."
+            }
+          ]
+        },
+        {
+          "name": "Løpende kostnader",
+          "options": [
+            {
+              "name": "Årsgebyr til EPO",
+              "price": 5000,
+              "fixed": true,
+              "recurring": true,
+              "description": "Årlig gebyr for å opprettholde det europeiske patentet."
+            }
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Dialogsøk hos Patentstyret (valgfritt)",
+          "details": [
+            "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser.",
+            "Gir tidlig indikasjon på muligheten for å få patent.",
+            "Kan avdekke utløpte patenter som gir 'Freedom to operate'.",
+            "Anbefales å gjøre før du går videre med søknadsprosessen."
+          ]
+        },
+        {
+          "title": "Innlevering av norsk patentsøknad til Patentstyret",
+          "details": [
+            "Din søknad kan holdes hemmelig i opptil 18 måneder.",
+            "Du kan bruke søknaden til å søke om patent i utlandet innenfor 12 måneder (bruk av \"prioritet\").",
+            "Senest syv måneder fra innlevering vurderer Patentstyret søknaden din."
+          ]
+        },
+        {
+          "title": "Tilpasning av den norske patentsøknaden",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Etter 2-4 år: Patentet ditt blir utstedt",
+          "details": [
+            "Når patentet blir utstedt, vil omfanget av beskyttelsen være synlig for andre. Du må løpende vurdere om du vil opprettholde patentet ditt. For hvert år patentet opprettholdes, må du betale et årsgebyr. Dette gebyret øker for hvert år."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Internasjonal patentsøknad",
+      "basePrice": 0,
+      "subcategories": [
+        {
+          "name": "Første år",
+          "options": [
+            {
+              "name": "Dialogsøk hos Patentstyret",
+              "price": 3500,
+              "fixed": false,
+              "description": "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser etter lignende ideer. Dette gir en god indikasjon på sannsynligheten for å få patent, eller om det finnes utløpte patenter som gir 'Freedom to operate'."
+            },
+            {
+              "name": "Utarbeidelse og håndtering av søknad (utgift til rådgiver)",
+              "price": 65000,
+              "fixed": false,
+              "description": "Rådgiveren setter seg inn i oppfinnelsen din og forbereder internasjonal (PCT) søknad."
+            },
+            {
+              "name": "Gebyr til WIPO for internasjonal søknad",
+              "price": 20000,
+              "fixed": true,
+              "description": "Gebyr til Verdensorganisasjonen for intellektuell eiendomsrett (WIPO) for innlevering av internasjonal søknad."
+            }
+          ]
+        },
+        {
+          "name": "Andre år",
+          "options": [
+            {
+              "name": "Tilpasning av internasjonal søknad (utgift til rådgiver)",
+              "price": 25000,
+              "fixed": false,
+              "description": "Justering av internasjonal søknad basert på tilbakemeldinger fra WIPO."
+            },
+            {
+              "name": "Gebyr for inntreden i nasjonale faser (per land)",
+              "price": 10000,
+              "fixed": false,
+              "description": "Gebyr for å fortsette søknadsprosessen i individuelle land eller regioner etter den internasjonale fasen."
+            }
+          ]
+        },
+        {
+          "name": "Løpende kostnader",
+          "options": [
+            {
+              "name": "Varierte nasjonale årsgebyrer",
+              "price": 0,
+              "fixed": false,
+              "recurring": true,
+              "description": "Årlige gebyrer varierer avhengig av hvilke land du velger å opprettholde patentet i. Disse kostnadene er ikke inkludert i denne oversikten."
+            }
+          ]
+        }
+      ],
+      "process": [
+        {
+          "title": "Dialogsøk hos Patentstyret (valgfritt)",
+          "details": [
+            "To timer med en saksbehandler som hjelper deg å søke i patentdatabaser.",
+            "Gir tidlig indikasjon på muligheten for å få patent.",
+            "Kan avdekke utløpte patenter som gir 'Freedom to operate'.",
+            "Anbefales å gjøre før du går videre med søknadsprosessen."
+          ]
+        },
+        {
+          "title": "Innlevering av norsk patentsøknad til Patentstyret",
+          "details": [
+            "Din søknad kan holdes hemmelig i opptil 18 måneder.",
+            "Du kan bruke søknaden til å søke om patent i utlandet innenfor 12 måneder (bruk av \"prioritet\").",
+            "Senest syv måneder fra innlevering vurderer Patentstyret søknaden din."
+          ]
+        },
+        {
+          "title": "Tilpasning av den norske patentsøknaden",
+          "details": [
+            "En patentsøknad må ofte justeres før den kan godkjennes. For eksempel kan det være behov for presiseringer i søknaden.",
+            "Noen ganger foregår justeringen i flere omganger."
+          ]
+        },
+        {
+          "title": "Etter 2-4 år: Patentet ditt blir utstedt",
+          "details": [
+            "Når patentet blir utstedt, vil omfanget av beskyttelsen være synlig for andre. Du må løpende vurdere om du vil opprettholde patentet ditt. For hvert år patentet opprettholdes, må du betale et årsgebyr. Dette gebyret øker for hvert år."
+          ]
+        }
+      ]
+    }
+  ]
+}
