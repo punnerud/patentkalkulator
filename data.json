@@ -55,10 +55,10 @@
           "options": [
             {
               "name": "Årsgebyr til Patent- og Varemerkestyret",
-              "price": 500,
-              "fixed": true,
+              "price": 4000,
+              "fixed": false,
               "recurring": true,
-              "description": "Du må betale et årlig gebyr for å opprettholde patentet ditt. De tre første årene er årsgebyret 500 kr per år. Deretter øker årsgebyret. Vær oppmerksom på at du eventuelt må betale ytterligere til rådgiver for håndtering av gebyrer."
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det norske patentet. Starter på 500 kr de første årene og øker gradvis til 7000 kr i de siste årene."
             }
           ]
         }
@@ -145,17 +145,17 @@
           "options": [
             {
               "name": "Årsgebyr til Patent- og Varemerkestyret",
-              "price": 500,
-              "fixed": true,
+              "price": 4000,
+              "fixed": false,
               "recurring": true,
-              "description": "Årlig gebyr for å opprettholde det norske patentet."
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det norske patentet."
             },
             {
               "name": "Årsgebyr til EPO",
-              "price": 5000,
-              "fixed": true,
+              "price": 15000,
+              "fixed": false,
               "recurring": true,
-              "description": "Årlig gebyr for å opprettholde det europeiske patentet."
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det europeiske patentet i utvalgte land."
             }
           ]
         }
@@ -250,10 +250,28 @@
           "name": "Andre år",
           "options": [
             {
-              "name": "Tilpasning av norsk og internasjonal søknad (utgift til rådgiver)",
-              "price": 30000,
+              "name": "Tilpasning av internasjonal søknad (utgift til rådgiver)",
+              "price": 25000,
               "fixed": false,
-              "description": "Justering av både norsk og internasjonal søknad basert på tilbakemeldinger fra patentkontorene."
+              "description": "Justering av internasjonal søknad basert på tilbakemeldinger fra WIPO."
+            },
+            {
+              "name": "Inntreden i nasjonal fase - USA",
+              "price": 110000,
+              "fixed": false,
+              "description": "Kostnader for å fortsette søknadsprosessen i USA, inkludert oversettelse, gebyrer og lokal representant."
+            },
+            {
+              "name": "Inntreden i nasjonal fase - Kina",
+              "price": 120000,
+              "fixed": false,
+              "description": "Kostnader for å fortsette søknadsprosessen i Kina, inkludert oversettelse, gebyrer og lokal representant."
+            },
+            {
+              "name": "Inntreden i nasjonal fase - Taiwan",
+              "price": 110000,
+              "fixed": false,
+              "description": "Kostnader for å fortsette søknadsprosessen i Taiwan, inkludert oversettelse, gebyrer og lokal representant."
             }
           ]
         },
@@ -262,10 +280,31 @@
           "options": [
             {
               "name": "Årsgebyr til Patent- og Varemerkestyret",
-              "price": 500,
-              "fixed": true,
+              "price": 4000,
+              "fixed": false,
               "recurring": true,
-              "description": "Årlig gebyr for å opprettholde det norske patentet."
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det norske patentet."
+            },
+            {
+              "name": "Årsgebyr USA",
+              "price": 3500,
+              "fixed": false,
+              "recurring": true,
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det amerikanske patentet."
+            },
+            {
+              "name": "Årsgebyr Kina",
+              "price": 4500,
+              "fixed": false,
+              "recurring": true,
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde det kinesiske patentet."
+            },
+            {
+              "name": "Årsgebyr Taiwan",
+              "price": 3500,
+              "fixed": false,
+              "recurring": true,
+              "description": "Gjennomsnittlig årlig gebyr for å opprettholde patentet i Taiwan."
             }
           ]
         }
